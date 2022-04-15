@@ -1,0 +1,17 @@
+<form [formGroup]="connexionForm" (ngSubmit)="onSubmit(identifiant.value,motDePasse.value)">
+<!--<form [formGroup]="connexionForm" (ngSubmit)="addUser(connexionForm.value)">-->
+  <div>
+    <label class="erreurLabel" *ngIf="etat == false">Identifiant ou mot de passe incorrect</label>
+  </div>
+  <div>
+    <label class="titre">Utilisateur</label>
+    <input class="form-control" type="text" #identifiant [formControlName]="'identifiant'" />
+  </div>
+  <div>
+    <label class="titre">Mot de passe</label>
+    <input class="form-control" type="text" #motDePasse [formControlName]="'motDePasse'" />
+  </div>
+  <div>
+    <button class="btn btn-success btn_saisie" type="submit">Connexion</button>
+  </div>
+</form>

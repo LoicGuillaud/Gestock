@@ -1,0 +1,40 @@
+<form [formGroup]="changementEmplacementForm" (ngSubmit)="onSubmit(changementEmplacementForm.value); emplacement.focus()">
+  <div>
+    <label name="designationLabel">{{designation}}</label>
+  </div>
+  <div>
+    <label class="titre">Emplacement d'origine</label>
+    <input class="form-control" type="text" #emplacement [formControlName]="'emplacementOrigine'" />
+  </div>
+  <div>
+    <label class="titre">Code Article + Lot</label>
+    <input class="form-control" type="text" name="codeArtLot" #codeArtLot [formControlName]="'codeArticleLot'" />
+  </div>
+
+  <div>
+    <label class="erreurLabel">{{erreur}}</label>
+  </div>
+  <div>
+    <button class="btn btn-success btn_saisie" type="button" (click)="verifArticleEmplacement(codeArtLot.value,emplacement.value); quantiteADeplacer.value = quantiteEmplacement.toString()">Vérifier si l'article existe à l'emplacement</button>
+  </div>
+  <br><br><br>
+  <div>
+    <label class="titre">Quantité à l'emplacement : {{quantiteEmplacement}} {{unite}}</label>
+  </div>
+  <br>
+  <div>
+    <label class="titre">Quantité à déplacer</label>
+    <input class="form-control input-qte" type="number" [readOnly]="readonly()" #quantiteADeplacer [formControlName]="'quantite'" />
+    <label class="uniteLabel">{{unite}}</label>
+  </div>
+  <div>
+    <label class="titre">Emplacement d'arrivée</label>
+    <input class="form-control" type="text" [readOnly]="readonly()" #emplacementArrivee [formControlName]="'emplacementArrivee'" />
+  </div>
+  <div>
+    <label class="erreurLabel">{{erreur2}}</label>
+  </div>
+  <div>
+    <button class="btn btn-success btn_saisie" type="submit">Transfert</button>
+  </div>
+</form>

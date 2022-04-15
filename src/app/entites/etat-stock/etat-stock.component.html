@@ -1,0 +1,25 @@
+<form [formGroup]="etatStockForm" (ngSubmit)="onSubmit(codeArtLot.value); ">
+  <div>
+    <label class="titre">Code article + lot</label>
+    <input class="form-control" type="text" #codeArtLot [formControlName]="'codeArticleLot'" />
+  </div>
+  <div>
+    <label class="erreurLabel">{{erreur}}</label>
+  </div>
+  <div>
+    <button class="btn btn-success btn_saisie" type="submit">Chercher</button>
+  </div>
+  <br>
+  <table #tableau>
+    <tr>
+      <td>Emplacement</td>
+      <td>Quantité</td>
+      <td>Unité</td>
+    </tr>
+      <tr *ngFor="let ligne of lignesStock">
+        <td>{{ligne.emplacement}}</td>
+        <td>{{ligne.quantite}}</td>
+        <td>{{ligne.unite}}</td>
+      </tr>
+  </table>
+</form>

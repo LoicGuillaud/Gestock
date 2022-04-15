@@ -1,0 +1,18 @@
+<div>
+  <button class="btn btn-success btn_saisie" routerLink="/changement-emplacement">Changement d'emplacement</button>
+</div>
+<div *ngIf="user == 'lgu'">
+  <button class="btn btn-success btn_saisie" routerLink="/reception">Réception</button>
+</div>
+<div>
+  <button class="btn btn-success btn_saisie" routerLink="/etat-stock">Consultation de stock</button>
+</div>
+<div>
+  <button class="btn btn-success btn_saisie" routerLink="/preparation">Préparation</button>
+</div>
+<div>
+  <button class="btn btn-success btn_saisie" routerLink="/etat-stock">Retour de préparation</button>
+</div>
+<div *ngIf="user == 'lgu' || user == 'dbe'">
+  <button class="btn btn-success btn_saisie" routerLink="/etat-stock">Entrée manuelle</button>
+</div>

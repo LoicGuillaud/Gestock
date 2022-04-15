@@ -1,0 +1,58 @@
+<form [formGroup]="preparationForm" (ngSubmit)="onSubmit(preparationForm.value); of.focus()">
+  <div>
+    <label name="designationLabel">{{designation}}</label>
+  </div>
+  <div>
+    <label class="titre">N°OF</label>
+    <input class="form-control" type="number" #of [formControlName]="'of'" />
+  </div>
+  <div>
+    <label class="erreurLabel">{{erreur}}</label>
+  </div>
+  <div>
+    <button class="btn btn-success btn_saisie" type="button" (click)="afficherListeAServir(of.value);">Afficher la liste à servir</button>
+  </div>
+  <form [formGroup]="saisieForm">
+    <table #tableauSaisie>
+      <thead>
+      <td colspan="3" class="titreSaisie">Saisie</td>
+      </thead>
+      <thead>
+      <td>Code Article + Lot</td>
+      <td>Emplacement</td>
+      <td>Quantité</td>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="caseSaisieCodeArtLot"><input class="inputSaisie" type="text" #codeArtLotSaisie [formControlName]="'codeArtLot'"/></td>
+        <td class="caseSaisie"><input class="inputSaisie" type="text" #emplacementSaisie [formControlName]="'emplacement'"/></td>
+        <td class="caseSaisie"><input class="inputSaisie" type="text" #quantiteSaisie [formControlName]="'quantite'"/></td>
+      </tr>
+      </tbody>
+    </table>
+    <div>
+      <button class="btn btn-success btn_saisie" type="button" (click)="validerSaisie();">Valider la saisie</button>
+    </div>
+  </form>
+  <table #tableau>
+    <thead>
+    <td>Code Article + Lot</td>
+    <td>Emplacement</td>
+    <td>Quantité</td>
+    </thead>
+    <tbody *ngFor="let ligne of lignesListeAServir">
+    <tr [ngClass]="{'traitee' : ligne.etat == true, 'non_traitee' : ligne.etat == false}">
+      <td>{{ligne.codeArtLot}}</td>
+      <td>{{ligne.emplacement}}</td>
+      <td>{{ligne.quantite}} {{ligne.unite}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div>
+    <label class="titre">Emplacement d'arrivée</label>
+    <input class="form-control" type="number" #emplacementArrivee [formControlName]="'emplacementArrivee'" />
+  </div>
+  <div>
+    <button class="btn btn-success btn_saisie" type="submit">Valider la liste à servir</button>
+  </div>
+</form>
